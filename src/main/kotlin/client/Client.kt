@@ -34,13 +34,15 @@ fun main() = runBlocking {
 
     var json = Json
     var token: String? = null
-    setConnection()
 
+    setConnection()
 
     var factory = SSLSocketFactory.getDefault() as SSLSocketFactory
     server = factory.createSocket("localhost", properties.getProperty("port").toInt()
     ) as SSLSocket
 
+
+    logger.debug { "Protocolos soportados: ${server!!.supportedProtocols.contentToString()}" }
     server!!.enabledCipherSuites = arrayOf("TLS_AES_128_GCM_SHA256")
     server!!.enabledProtocols = arrayOf("TLSv1.3")
 
@@ -105,7 +107,7 @@ private fun setConnection() {
 
 
     val file =
-        System.getProperty("user.dir") + File.separator + "cert" + File.separator + "client_keysotre.p12"
+        System.getProperty("user.dir") + File.separator + "cert" + File.separator + "clave_cliente.p12"
 
     if (!Files.exists(Path.of(file))) {
         System.err.println(" ❌ No se encuentra el fichero de certificado del cliente ❌ ")

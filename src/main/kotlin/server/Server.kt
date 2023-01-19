@@ -25,7 +25,7 @@ fun main(): Unit = runBlocking {
 
     logger.debug { "Consultando fichero llavero del Servidor" }
 
-    val file = System.getProperty("user.dir") + File.separator + "cert" + File.separator + "server_keystore.p12"
+    val file = System.getProperty("user.dir") + File.separator + "cert" + File.separator + "clave_servidor.p12"
     if (!Files.exists(Path.of(file))) {
         System.err.println(" ❌ No se encuentra el fichero de certificado del servidor ❌ ")
         exitProcess(0)
@@ -54,10 +54,6 @@ fun main(): Unit = runBlocking {
 
 
     }
-
-
-    //  val port = properties.getProperty("port").toInt()
-    println(file)
 
 
 }
