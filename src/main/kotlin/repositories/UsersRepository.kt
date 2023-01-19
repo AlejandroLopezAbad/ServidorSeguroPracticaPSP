@@ -1,4 +1,0 @@
-package repositories
-
-class UsersRepository {
-}
